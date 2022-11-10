@@ -3,7 +3,7 @@ const { Discord, EmbedBuilder, MessageEmbed, Message } = require('discord.js');
 import('got')
 const request =  require('request')
 
-module.exports.run = async(message, client, Discord, args1) =>{
+module.exports.run = async(client) =>{
 
         
         function intervaltime(){
@@ -35,7 +35,8 @@ module.exports.run = async(message, client, Discord, args1) =>{
 			embed.setImage(memeImage);
 			//embed.setFooter({ text:`👍 ${memeUpvotes} 💬 ${memeNumComments}`});
 
-			message.channel.send({ embed });
+			//message.channel.send({ embed });
+            client.channels.cache.get('1038292363967201331').send({embed});
 		
         }); 
 

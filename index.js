@@ -7,6 +7,7 @@ const fetch = require('node-fetch')
 const { loadCommands } = require('./utils/loadcommands.js');
 const meme = require('./commands/memes.js')
 const fs = require('fs');
+const cron = require('cron')
 
 
 client.commands = new Discord.Collection();
@@ -41,6 +42,7 @@ client.on("message", async message =>{
   let command = args.shift().toLowerCase();
 
   if(command === "ping"){
+    console.log(message.channel.id)
     const m = await message.channel.send("Ping?");
     m.edit(`Pong! Latencia: ${m.createdTimestamp - message.createdTimestamp}ms.`);
   }
@@ -50,9 +52,15 @@ client.on("message", async message =>{
   const args1 = messageArray.slice(1);
 
 
-  if(command === 'meme'){
-  meme.run(message, client, Discord, args1);
-  }
+
+  
 });
 
+function sendMeme() {
+  meme.run(client);
+}
 
+let job1 = new cron.CronJob('00 00 10 * * 1-5', sendMeme); // fires from Monday to Friday, every hour from 8 am to 16
+
+// To make a job start, use job.start()
+job1.start();
