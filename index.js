@@ -1,7 +1,7 @@
 require('dotenv').config()
 const Discord = require("discord.js");
 const client = new Discord.Client({intents: ["MESSAGE_CREATE"]});
-const PREFIX = "!";
+const PREFIX = "$";
 const token = process.env.DISCORD_BOT_SECRET
 const fetch = require('node-fetch')
 const { loadCommands } = require('./utils/loadcommands.js');
@@ -46,6 +46,7 @@ client.on("message", async message =>{
     const m = await message.channel.send("Ping?");
     m.edit(`Pong! Latencia: ${m.createdTimestamp - message.createdTimestamp}ms.`);
   }
+
 
   const messageArray = message.content.split(/\s+/);
   const cmd = messageArray[0];

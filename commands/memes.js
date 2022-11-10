@@ -11,7 +11,7 @@ module.exports.run = async(client) =>{
         }
         setTimeout(intervaltime, 1500);
 
-        request.get({url:'https://www.reddit.com/r/memes/random/.json', json: true}, 
+        request.get({url:'https://www.reddit.com/r/Demotivational/random/.json', json: true}, 
         function (e, r, data) {
     
 
@@ -36,7 +36,7 @@ module.exports.run = async(client) =>{
 			//embed.setFooter({ text:`👍 ${memeUpvotes} 💬 ${memeNumComments}`});
 
 			//message.channel.send({ embed });
-            client.channels.cache.get('1038292363967201331').send({embed});
+            client.channels.cache.get('598126825792733216').send({embed});
 		
         }); 
 
